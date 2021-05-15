@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: service
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kugga-blog?useUnicode=true&characterEncodeing=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: fhnbyyb123
+
+#mybatis-plus配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+
+#swagger2
+enable:
+  swagger2: true
+server:
+  port: 8090
+
+

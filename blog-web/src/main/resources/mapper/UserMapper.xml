@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.mapper.UserMapper">
+<select id="getUserRoleByUserId" resultType="java.lang.String">
+select ROLE_NAME
+from tb_role a inner join con_role_user b
+on a.ID=b.ROLE_ID
+where b.USER_ID=#{id}
+</select>
+
+</mapper>
