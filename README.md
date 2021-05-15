@@ -1,0 +1,2 @@
+# kugga-blog
+my blog
