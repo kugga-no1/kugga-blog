@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.li.mapper.MenuMapper">
+
+    <select id="getMenuByRoleName" resultType="com.li.pojo.Menu">
+        select c.ID,c.MENU_NAME,c.URI,c.ICON,c.PARENT_ID,c.DISABLED
+        from tb_role a inner join con_role_menu b on a.ID=b.ROLE_ID
+        inner join tb_menu c on b.MENU_id=c.ID
+        where a.ROLE_NAME=#{roleName}
+    </select>
+</mapper>

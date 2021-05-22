@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 /**
  * 改进了mpgenerator 在多模块下可以自动打入不同包
+ * 1.记得把xml放进resource里
+ * 2，记得给dao层的mapper类加@Mapper
  */
 public class MpGeneratorUtilsAutoParentUtil {
 

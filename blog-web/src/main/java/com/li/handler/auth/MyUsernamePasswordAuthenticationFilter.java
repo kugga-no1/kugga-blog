@@ -17,7 +17,7 @@ import java.io.InputStream;
 import java.util.Map;
 
 /**
-
+* Springsecurity的账户密码过滤器类重写
  **/
 
 public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -28,10 +28,12 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
-        //携带头要是json格式得application/json;charset=UTF-8
+        //json格式application/json;charset=UTF-8
         //前后端分离 这里是接收的是json串
         if (request.getContentType().equals(MediaType.APPLICATION_JSON_UTF8_VALUE)
-                || request.getContentType().equals(MediaType.APPLICATION_JSON_VALUE)){
+                || request.getContentType().equals(MediaType.APPLICATION_JSON_VALUE)
+                ||request.getContentType().equals("application/json;charset=utf-8"))
+        {
         ObjectMapper objectMapper = new ObjectMapper();
         //token对象
         UsernamePasswordAuthenticationToken authRequest = null;
@@ -44,7 +46,7 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
             authenticationBean = objectMapper.readValue(is, Map.class);
         } catch (IOException e) {
             //将异常放到自定义的异常类中
-            System.out.println(e.getMessage());
+            System.out.println("流异常"+e.getMessage());
             throw new MyAuthenticationException(e.getMessage());
         }
         try {
@@ -61,7 +63,6 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
                     authRequest = new UsernamePasswordAuthenticationToken(username, password);
                     setDetails(request, authRequest);
                     return this.getAuthenticationManager().authenticate(authRequest);
-
                 }
             }
         } catch (AuthenticationException e) {
@@ -70,7 +71,7 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
         }
             throw new MyAuthenticationException("用户或者密码错误");
     }
-        return  this.attemptAuthentication(request,response);
+        throw new MyAuthenticationException("数据不是json格式");
  }
 
 

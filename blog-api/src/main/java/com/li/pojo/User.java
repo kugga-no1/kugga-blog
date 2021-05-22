@@ -60,5 +60,13 @@ public class User implements Serializable {
     @TableField("INTRO")
     private String intro;
 
+    @ApiModelProperty(value = "逻辑删除 0删1没删")
+    @TableField("LOGIC_DELETE")
+    private boolean logicDelete;
+
+    @ApiModelProperty(value = "是否禁言 0禁1没禁")
+    @TableField("IS_SILENCE")
+    private boolean isSilence;
+
 
 }

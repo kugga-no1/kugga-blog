@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.li.mapper.UserMapper">
-<select id="getUserRoleByUserId" resultType="java.lang.String">
-select ROLE_NAME
-from tb_role a inner join con_role_user b
-on a.ID=b.ROLE_ID
-where b.USER_ID=#{id}
-</select>
+    <select id="getUserRoleByUserId" resultType="java.lang.String">
+    select ROLE_NAME
+    from tb_role a inner join con_role_user b
+    on a.ID=b.ROLE_ID
+    where b.USER_ID=#{id}
+    </select>
+
+    <select id="queryUserByConditions" resultType="com.li.dto.UserDTO">
+        select  a.AVATAR,c.ROLE_NAME,a.NICKNAME,a.CREATE_TIME,a.UPDATE_TIME,a.IS_SILENCE
+        from tb_user a left join con_role_user b on a.ID=b.USER_ID
+                       left join tb_role c on b.ROLE_ID=c.ID
+        <where>
+            <if test="userQueryVO.roleName!=null and userQueryVO.roleName!=''">
+                c.ROLE_NAME like concat(concat('%',#{userQueryVO.roleName}),'%')
+            </if>
+            <if test="userQueryVO.nickname!=null and userQueryVO.nickname!=''">
+                and a.NICKNAME like concat(concat('%',#{userQueryVO.nickname}),'%')
+            </if>
+        </where>
+        ORDER BY a.NICKNAME
+        limit #{userQueryVO.current},#{userQueryVO.size}
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select count(*)
+        from tb_user a left join con_role_user b on a.ID=b.USER_ID
+        left join tb_role c on b.ROLE_ID=c.ID
+        <where>
+        <if test="userQueryVO.roleName!=null and userQueryVO.roleName!=''">
+            c.ROLE_NAME like concat(concat('%',#{userQueryVO.roleName}),'%')
+        </if>
+        <if test="userQueryVO.nickname!=null and userQueryVO.nickname!=''">
+            and a.NICKNAME like concat(concat('%',#{userQueryVO.nickname}),'%')
+        </if>
+        </where>
+    </select>
+
 
 </mapper>

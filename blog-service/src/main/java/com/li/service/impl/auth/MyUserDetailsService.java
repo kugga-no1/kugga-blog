@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Springsecurity的UserDetailsService 通过loadbyusername方法创建一个USerDetails类
+ **/
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {

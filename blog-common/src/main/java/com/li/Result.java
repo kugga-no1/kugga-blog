@@ -12,7 +12,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class Result {
 
-    private boolean status;
+    private boolean success;
 
     private String code;
 
@@ -22,13 +22,13 @@ public class Result {
 
     public static Result success(){
         Result result=new Result();
-        result.status=true;
+        result.success =true;
         return result;
     }
 
     public static Result error(){
         Result result=new Result();
-        result.status=false;
+        result.success =false;
         return result;
     }
 

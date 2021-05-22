@@ -6,6 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+/**
+ * Springsecurity的UserDetails类重写 记录用户信息
+ **/
 public class MyUserDetails implements UserDetails {
     //用户实体类
     private User user;
