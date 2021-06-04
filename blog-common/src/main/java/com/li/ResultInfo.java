@@ -7,6 +7,7 @@ public enum ResultInfo {
     SUCCESS("200","成功"),
     LOGIN_FAIL("124","登录失败"),
     Not_Found("404","没找到"),
+    ACCESS_DENY("403","权限不足"),
     GLOBAL_ERROR("101","异常"),
     QUERYVO_NULL("405","传递的QUERRYVO为null")
     ;

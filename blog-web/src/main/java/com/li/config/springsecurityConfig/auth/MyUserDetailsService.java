@@ -1,4 +1,4 @@
-package com.li.service.impl.auth;
+package com.li.config.springsecurityConfig.auth;
 
 import com.li.api.UserService;
 import com.li.pojo.User;
@@ -35,8 +35,8 @@ public class MyUserDetailsService implements UserDetailsService {
                 simpleGrantedAuthority =new SimpleGrantedAuthority(role);
                 authorities.add(simpleGrantedAuthority);
             }
-
            // myUserDetails.getUser().setPassword("{noop}"+myUserDetails.getUser().getPassword()); 不加密密码
+
             return new MyUserDetails(user,authorities);
         }
         else {

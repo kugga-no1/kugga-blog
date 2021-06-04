@@ -5,7 +5,7 @@ package com.li.handler.auth;
 import com.alibaba.fastjson.JSON;
 import com.li.Result;
 import com.li.ResultInfo;
-import com.li.service.impl.auth.MyUserDetails;
+import com.li.config.springsecurityConfig.auth.MyUserDetails;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;

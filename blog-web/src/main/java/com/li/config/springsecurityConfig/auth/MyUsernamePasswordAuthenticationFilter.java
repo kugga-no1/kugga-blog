@@ -1,4 +1,4 @@
-package com.li.handler.auth;
+package com.li.config.springsecurityConfig.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.li.api.UserService;
@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,13 +41,11 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
         //取authenticationBean
         Map<String, String> authenticationBean = null;
 
-
         try (InputStream is = request.getInputStream()) {
             //字符串转集合
             authenticationBean = objectMapper.readValue(is, Map.class);
         } catch (IOException e) {
             //将异常放到自定义的异常类中
-            System.out.println("流异常"+e.getMessage());
             throw new MyAuthenticationException(e.getMessage());
         }
         try {

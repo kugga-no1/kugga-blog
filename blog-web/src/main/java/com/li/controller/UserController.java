@@ -3,18 +3,13 @@ package com.li.controller;
 
 import com.li.Result;
 import com.li.ResultInfo;
-import com.li.api.RoleService;
 import com.li.api.UserService;
 import com.li.dto.UserDTO;
-import com.li.pojo.User;
-import com.li.service.impl.auth.MyUserDetails;
-import com.li.service.impl.auth.MyUserDetailsService;
 import com.li.vo.UserQueryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

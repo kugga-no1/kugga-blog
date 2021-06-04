@@ -1,4 +1,4 @@
-package com.li.service.impl.auth;
+package com.li.config.springsecurityConfig.auth;
 
 import com.li.pojo.User;
 import org.springframework.security.core.GrantedAuthority;
